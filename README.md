@@ -17,11 +17,11 @@ The domain is a simple one. We are writing an application for a Vet clinic, wher
 
 ## Exercises
 
-These exercises involve working with the AngularJS TodoMVC web site (http://todomvc.com/examples/angularjs/#/).
+These exercises involve working with the AngularJS TodoMVC web site at https://todomvc.com/examples/angular/dist/browser/#/all
 
 ### Exercise 1 - Write a test to add "Buy some milk" to the todo list
     
-#### Step 1: Create a WebDriver instance and open the "http://todomvc.com/examples/angularjs/#/" URL.
+#### Step 1: Create a WebDriver instance and open the "[http://todomvc.com/examples/angularjs/#/](https://todomvc.com/examples/angular/dist/browser/#/all)" URL.
 
 Create a new Firefox webdriver instance:
 
@@ -33,13 +33,13 @@ Since this is an asynchronous application, configure WebDriver to wait up to 2 s
      
 Open the TodoMVC application:
 
-    driver.get("http://todomvc.com/examples/angularjs/#/");
+    driver.get("https://todomvc.com/examples/angular/dist/browser/#/all");
      
 #### Step 2: Enter 'Buy some milk' into the todo field
     
 Identify the todo input field on the web page and use the "Find By Id" strategy to locate it:
     
-    WebElement inputField = driver.findElement(By.id("new-todo"));
+    WebElement inputField = driver.findElement(By.cssSelector(".new-todo"));
     inputField.sendKeys("Buy some milk");
 
 #### Step 3: Hit RETURN to add the todo item
@@ -52,7 +52,7 @@ Enter RETURN into the todo field:
 
 Use the `getText()` method to get the text of the list box:
 
-    WebElement todoListContents = driver.findElement(By.id("todo-list"));
+    WebElement todoListContents = driver.findElement(By.cssSelector(".todo-list"));
     assertThat(todoListContents.getText(), containsString("Buy some milk"));
         
 #### Step 5: Close the browser
