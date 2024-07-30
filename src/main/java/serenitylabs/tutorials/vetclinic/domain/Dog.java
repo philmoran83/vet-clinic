@@ -11,10 +11,6 @@ public class Dog {
     private final String favouriteToy;
 
 
-    public static WithBreed called(String name) {
-        return new DogBreeder(name);
-    }
-
     public String getColour() {
         return this.colour;
     }
@@ -27,50 +23,6 @@ public class Dog {
         return this.favouriteToy;
     }
 
-    interface WithBreed {
-        WithColour ofBreed(String breed);
-    }
-    interface WithColour {
-        DogBreeder ofColour(String colour);
-    }
-
-
-    public static class DogBreeder implements WithBreed, WithColour{
-        private final String name;
-        public String breed;
-        private String colour;
-        private String favouriteToy;
-        private String favouriteFood;
-
-
-        public DogBreeder(String name){
-            this.name=name;
-        }
-
-        public DogBreeder ofBreed(String breed) {
-            this.breed =breed;
-            return this;
-             }
-
-        public Dog bornOn(LocalDate dateOfBirth) {
-            return new Dog(name, breed,colour, favouriteToy, favouriteFood,dateOfBirth);
-        }
-
-        public DogBreeder ofColour(String colour) {
-            this.colour=colour;
-            return this;
-        }
-
-        public DogBreeder withFavouriteToy(String favouriteToy) {
-            this.favouriteToy=favouriteToy;
-            return this;
-        }
-
-        public DogBreeder withFavouriteFood(String favouriteFood) {
-            this.favouriteFood=favouriteFood;
-            return this;
-        }
-    }
 
     public String getName() {
         return name;
@@ -84,7 +36,7 @@ public class Dog {
         return breed;
     }
 
-    private Dog(String name,String breed,String colour, String favouriteToy, String favouriteFood, LocalDate dateOfBirth) {
+    Dog(String name, String breed, String colour, String favouriteToy, String favouriteFood, LocalDate dateOfBirth) {
         this.name=name;
         this.dateOfBirth=dateOfBirth;
         this.breed = breed;
