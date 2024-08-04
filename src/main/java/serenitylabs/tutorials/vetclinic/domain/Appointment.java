@@ -42,6 +42,14 @@ public class Appointment {
         return reason;
     }
 
+    public Boolean isBefore(LocalDateTime queriedTime){
+        return appointmentTime.isBefore(queriedTime);
+    }
+
+    public Boolean isAfter(LocalDateTime queriedTime){
+        return appointmentTime.isAfter(queriedTime);
+    }
+
     public static class AppointmentBooker {
         private final String petName;
         private String owner;
@@ -64,5 +72,8 @@ public class Appointment {
             this.reason = reason;
             return this;
         }
+
+
+
     }
 }

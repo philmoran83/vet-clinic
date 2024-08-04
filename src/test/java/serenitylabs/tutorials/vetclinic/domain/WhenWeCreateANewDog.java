@@ -3,6 +3,9 @@ package serenitylabs.tutorials.vetclinic.domain;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
@@ -13,9 +16,10 @@ public class WhenWeCreateANewDog {
     public void a_new_dog_should_have_a_name_and_a_breed_and_a_colour() throws Exception {
         Dog fido = Dog.called("Fido").ofBreed("Labrador").andOfColour("Black");
 
-        Assert.assertEquals("Fido",fido.getName());
-        Assert.assertEquals("Labrador", fido.getBreed());
-        Assert.assertEquals("Black", fido.getColour());
+        assertThat(fido.getName(),equalTo("Fido"));
+        assertThat(fido.getBreed(),equalTo("Labrador"));
+        assertThat(fido.getColour(),hasItem("Black"));
+
     }
 
     @Test
@@ -34,7 +38,5 @@ public class WhenWeCreateANewDog {
         assertThat(fido.getColour(), hasItem("Black"));
         assertThat(fido.getColour(), hasItem("White"));
     }
-
-
 
 }
